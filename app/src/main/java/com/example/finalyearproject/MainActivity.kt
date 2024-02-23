@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity() {
 //                R.id.QRScannerFragment,
                 R.id.feedbackFragment,
                 R.id.invitationFragment,
-                R.id.paymentAcknowledgeFragment
+                R.id.paymentAcknowledgeFragment,
+
             ),
             binding.drawerLayout
         )
@@ -74,7 +75,8 @@ class MainActivity : AppCompatActivity() {
             binding.navView.menu.findItem(R.id.logout)
                 ?.setOnMenuItemClickListener { logout(); true }
         }
-        userID?.let { actVM.getUser(it) }
+//        userID?.let { actVM.getUser(it) }
+        actVM.getUser(userID!!)
     }
 
     private fun setHeader(user: User) {

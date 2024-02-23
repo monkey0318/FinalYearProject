@@ -9,7 +9,7 @@ import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.tasks.await
 
 class AuthViewModel : ViewModel() {
-    val userLiveData = MutableLiveData<User>()
+    val userLiveData = MutableLiveData<User?>()
     private var listener: ListenerRegistration? = null
 
     override fun onCleared() {
@@ -27,12 +27,10 @@ class AuthViewModel : ViewModel() {
             .toObjects<User>()
             .firstOrNull() ?: return false
 
-
         listener?.remove()
         listener = USERS.document(user.user_id).addSnapshotListener { doc, _ ->
             userLiveData.value = doc?.toObject<User>()
         }
-
 
         return true
     }

@@ -20,7 +20,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 
-
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
@@ -32,7 +31,6 @@ class LoginFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
 
         binding = FragmentLoginBinding.inflate(inflater, container, false)
-
 
         binding.btnLogin.setOnClickListener {
             val email = binding.edtLoginEmail.text.toString().trim()
@@ -46,7 +44,6 @@ class LoginFragment : Fragment() {
 
     private fun login(email: String, password: String) {
         hideKeyboard()
-
         val ctx = requireContext()
         val email = binding.edtLoginEmail.text.toString().trim()
         val password = binding.edtLoginPassword.text.toString().trim()
@@ -77,7 +74,6 @@ class LoginFragment : Fragment() {
                                     .putExtra("userID", user.user_id)
                                 startActivity(intent)
                                 activity?.finish()
-
                             }
                         }
                 }
@@ -115,9 +111,6 @@ class LoginFragment : Fragment() {
                             login_fail()
                         }
                     }
-
-
-
 
                 db.collection("STAFF").whereEqualTo("user_email",email).get()
                     .addOnSuccessListener {
