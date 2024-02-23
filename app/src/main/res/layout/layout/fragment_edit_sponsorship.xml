@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="ViewModel"-->
+<!--            type="com.example.data.SponsorshipViewModel"/>-->
+<!--    </data>-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    tools:context=".event_management.EditSponsorshipFragment" >
+
+        <ImageView
+            android:id="@+id/imgSponsorLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#CCC"
+            android:cropToPadding="true"
+            android:importantForAccessibility="no"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/hgl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.452"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txtSponsorID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/hgl"
+            tools:text="A001" />
+
+        <EditText
+            android:id="@+id/edtSponsorPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="212dp"
+            android:background="@drawable/edit_text_bg"
+            android:ems="10"
+            android:hint="20.00"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="284dp"
+            android:text="Amount (RM)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnEventList" />
+
+        <Button
+            android:id="@+id/btnConfirmSponsor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="#AC4D6D"
+            android:text="@string/confirm"
+            app:layout_constraintStart_toEndOf="@+id/btnResetSponsor"
+            app:layout_constraintTop_toTopOf="@+id/btnResetSponsor"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/btnDeleteSponsor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#AC4D6D"
+            android:text="@string/delete"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSponsorLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgSponsorLogo"
+            app:layout_constraintTop_toTopOf="@+id/imgSponsorLogo"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/btnResetSponsor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#AC4D6D"
+            android:text="@string/reset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtSponsorPrice"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="75dp"
+            android:text="Sponsorship ID"
+            app:layout_constraintBottom_toBottomOf="@+id/textView14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.993"
+            app:layout_constraintStart_toEndOf="@+id/textView14"
+            app:layout_constraintTop_toTopOf="@+id/textView14"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hgl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="163dp" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="16dp"
+            android:text="Event ID"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtSponsorID" />
+
+        <EditText
+            android:id="@+id/edtSponsorshipId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_bg"
+            android:ems="10"
+            android:hint="0123456789"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toEndOf="@+id/spnEventList"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Sponsor ID"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtSponsorID"
+            app:layout_constraintEnd_toStartOf="@+id/txtSponsorID"
+            app:layout_constraintTop_toTopOf="@+id/txtSponsorID" />
+
+        <Spinner
+            android:id="@+id/spnEventList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".attendee_management.QRScannerFragment" >
+
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="338dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="32dp"
+        android:text="Scan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvAttendee"
+        app:layout_constraintVertical_bias="0.232" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAttendee"
+        android:layout_width="351dp"
+        android:layout_height="508dp"
+        android:layout_marginTop="24dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider7"
+        tools:listitem="@layout/rv_attendee_manage" />
+
+    <View
+        android:id="@+id/divider7"
+        android:layout_width="360dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="28dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SearchView
+        android:id="@+id/svAttendee"
+        android:layout_width="242dp"
+        android:layout_height="36dp"
+        android:background="@color/white"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Event"
+        app:layout_constraintBottom_toBottomOf="@+id/divider7"
+        app:layout_constraintEnd_toEndOf="@+id/divider7"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="@+id/divider7"
+        app:layout_constraintTop_toTopOf="@+id/divider7"
+        app:layout_constraintVertical_bias="0.515" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

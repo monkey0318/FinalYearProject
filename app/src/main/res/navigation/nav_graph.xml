@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/eventManagementFragment2">
+
+    <fragment
+        android:id="@+id/staffManagementFragment"
+        android:name="com.example.finalyearproject.staff_management.StaffManagementFragment"
+        android:label="Staff"
+        tools:layout="@layout/fragment_staff_management" />
+    <fragment
+        android:id="@+id/createUserFragment"
+        android:name="com.example.finalyearproject.staff_management.CreateUserFragment"
+        android:label="Create Staff"
+        tools:layout="@layout/fragment_create_user" />
+    <fragment
+        android:id="@+id/editUserFragment"
+        android:name="com.example.finalyearproject.staff_management.EditUserFragment"
+        android:label="Edit Staff Details"
+        tools:layout="@layout/fragment_edit_user" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.finalyearproject.user.UserProfileFragment"
+        android:label="User Profile"
+        tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/createEventFragment"
+        android:name="com.example.finalyearproject.event_management.CreateEventFragment"
+        android:label="Create Event"
+        tools:layout="@layout/fragment_create_event">
+        <action
+            android:id="@+id/action_createEventFragment_to_editEventFragment"
+            app:destination="@id/editEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventManagementFragment2"
+        android:name="com.example.finalyearproject.event_management.EventManagementFragment"
+        android:label="Event"
+        tools:layout="@layout/fragment_event_management">
+        <action
+            android:id="@+id/action_eventManagementFragment2_to_createEventFragment"
+            app:destination="@id/createEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/voucherFragment"
+        android:name="com.example.finalyearproject.payment.VoucherFragment"
+        android:label="Voucher"
+        tools:layout="@layout/fragment_voucher">
+        <action
+            android:id="@+id/action_voucherFragment_to_addVoucherFragment"
+            app:destination="@id/addVoucherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editEventFragment"
+        android:name="com.example.finalyearproject.event_management.EditEventFragment"
+        android:label="Edit Event"
+        tools:layout="@layout/fragment_edit_event" />
+<!--    <fragment-->
+<!--        android:id="@+id/reportFragment"-->
+<!--        android:name="com.example.finalyearproject.report.ReportFragment"-->
+<!--        android:label="Report"-->
+<!--        tools:layout="@layout/fragment_report" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/chatFragment"-->
+<!--        android:name="com.example.finalyearproject.communication.ChatFragment"-->
+<!--        android:label="Live Chat"-->
+<!--        tools:layout="@layout/fragment_chat">-->
+<!--        <argument-->
+<!--            android:name="customerId"-->
+<!--            app:argType="string" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/liveChatFragment"-->
+<!--        android:name="com.example.finalyearproject.communication.LiveChatFragment"-->
+<!--        android:label="Live Chat">-->
+<!--        <action-->
+<!--            android:id="@+id/action_liveChatFragment_to_chatFragment"-->
+<!--            app:destination="@id/chatFragment" />-->
+<!--    </fragment>-->
+    <fragment
+        android:id="@+id/addVoucherFragment"
+        android:name="com.example.finalyearproject.payment.AddVoucherFragment"
+        android:label="Add Voucher"
+        tools:layout="@layout/fragment_add_voucher">
+        <action
+            android:id="@+id/action_addVoucherFragment_to_editVoucherFragment"
+            app:destination="@id/editVoucherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editVoucherFragment"
+        android:name="com.example.finalyearproject.payment.EditVoucherFragment"
+        android:label="Edit Voucher"
+        tools:layout="@layout/fragment_edit_voucher" />
+    <fragment
+        android:id="@+id/editFaqFragment"
+        android:name="com.example.finalyearproject.communication.EditFaqFragment"
+        android:label="Edit FAQ"
+        tools:layout="@layout/fragment_edit_faq" />
+    <fragment
+        android:id="@+id/faqFragment"
+        android:name="com.example.finalyearproject.communication.FaqFragment"
+        android:label="FAQ"
+        tools:layout="@layout/fragment_faq">
+        <action
+            android:id="@+id/action_faqFragment_to_editFaqFragment"
+            app:destination="@id/editFaqFragment" />
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/QRScannerFragment"-->
+<!--        android:name="com.example.finalyearproject.attendee_management.QRScannerFragment"-->
+<!--        android:label="QR Scanner"-->
+<!--        tools:layout="@layout/fragment_q_r_scanner" />-->
+    <fragment
+        android:id="@+id/feedbackFragment"
+        android:name="com.example.finalyearproject.communication.FeedbackFragment"
+        android:label="Feedback"
+        tools:layout="@layout/fragment_feedback" />
+    <fragment
+        android:id="@+id/editSponsorshipFragment"
+        android:name="com.example.finalyearproject.event_management.EditSponsorshipFragment"
+        android:label="Edit Sponsorship" />
+    <fragment
+        android:id="@+id/addSponsorshipFragment"
+        android:name="com.example.finalyearproject.event_management.AddSponsorshipFragment"
+        android:label="Add Sponsorship"
+        tools:layout="@layout/fragment_add_sponsorship">
+        <action
+            android:id="@+id/action_addSponsorshipFragment_to_editSponsorshipFragment"
+            app:destination="@id/editSponsorshipFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sponsorshipFragment"
+        android:name="com.example.finalyearproject.event_management.SponsorshipFragment"
+        android:label="Sponsorship"
+        tools:layout="@layout/fragment_sponsorship">
+        <action
+            android:id="@+id/action_sponsorshipFragment_to_addSponsorshipFragment"
+            app:destination="@id/addSponsorshipFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentAcknowledgeFragment"
+        android:name="com.example.finalyearproject.payment.PaymentAcknowledgeFragment"
+        android:label="Customer Payment History"
+        tools:layout="@layout/fragment_payment_acknowledge" />
+    <fragment
+        android:id="@+id/invitationFragment"
+        android:name="com.example.finalyearproject.communication.InvitationFragment"
+        android:label="Event Invititation"
+        tools:layout="@layout/fragment_invitation" />
+    <fragment
+        android:id="@+id/paymentAckDetailsFragment"
+        android:name="com.example.finalyearproject.payment.PaymentAckDetailsFragment"
+        android:label="Payment History Details"
+        tools:layout="@layout/fragment_payment_ack_details" />
+</navigation>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Roles">
+
+        <item>Manager</item>
+        <item>Staff</item>
+
+    </string-array>
+
+    <string-array name="Event_Status">
+
+        <item>Available</item>
+        <item>On-Going</item>
+        <item>Ended</item>
+
+    </string-array>
+
+</resources>

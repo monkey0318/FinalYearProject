@@ -7,5 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="limeGreen">#00FF00</color>
+    <color name="theme_blue">#88e1eb</color>
+    <color name="button_colour">#2ca2d1</color>
+
+    <color name="colorPrimary">#49BEFF</color>
+    <color name="colorPrimaryDark">#65DCE5</color>
+    <color name="colorAccent">#0D5D98</color>
+
+    <color name="headerTextColor">#ECE3E3</color>
+    <color name="headerBackground">#240b36</color>
+    <color name="profileBackground">#FFFFFF</color>
+    <color name="profileTextBackground">#F0F2F4</color>
 </resources>
