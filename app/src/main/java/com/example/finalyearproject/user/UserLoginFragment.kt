@@ -1,60 +1,142 @@
 package com.example.finalyearproject.user
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.finalyearproject.MainActivity
 import com.example.finalyearproject.R
+import com.example.finalyearproject.data.AuthViewModel
+import com.example.finalyearproject.data.User
+import com.example.finalyearproject.databinding.FragmentLoginBinding
+import com.example.finalyearproject.util.errorDialog
+import com.example.finalyearproject.util.hideKeyboard
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [UserLoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class UserLoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentLoginBinding
+    private val nav by lazy { findNavController() }
+    private val auth: AuthViewModel by activityViewModels()
+    private val db = Firebase.firestore
+    private var fail_count = 0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
+
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+
+
+        binding.btnLogin.setOnClickListener {
+            val email = binding.edtLoginEmail.text.toString().trim()
+            val password = binding.edtLoginPassword.text.toString().trim()
+
+            login(email,password) }
+//        binding.txtForgotPassword.setOnClickListener { nav.navigate(R.id.forgetPasswordFragment) }
+
+        return binding.root
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_login, container, false)
-    }
+    private fun login(email: String, password: String) {
+        hideKeyboard()
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment UserLoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            UserLoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val ctx = requireContext()
+        val email = binding.edtLoginEmail.text.toString().trim()
+        val password = binding.edtLoginPassword.text.toString().trim()
+
+        lifecycleScope.launch {
+            val success = auth.login(ctx, email, password,)
+            if (success) {
+
+                db.collection("USERS").whereEqualTo("user_email", email).get()
+                    .addOnSuccessListener {
+                        if (!it.isEmpty) {
+                            val thisUsers = it.toObjects(User::class.java)
+                            val user = thisUsers.first()
+                            fail_count = user!!.login_fail_count
+                        }
+                    }
+                if (fail_count < 3) {
+
+                    db.collection("USERS").whereEqualTo("user_email",email).get()
+                        .addOnSuccessListener {
+                            if (!it.isEmpty) {
+                                val thisUsers = it.toObjects(User::class.java)
+                                val user = thisUsers.first()
+                                db.collection("USERS").document(user.user_id)
+                                    .update("login_fail_count", 0)
+
+                                val intent = Intent(activity, MainActivity::class.java)
+                                    .putExtra("userID", user.user_id)
+                                startActivity(intent)
+                                activity?.finish()
+
+                            }
+                        }
+                }
+                else {
+
+                    login_fail()
+
                 }
             }
+            else {
+                db.collection("USERS").whereEqualTo("user_email", email).get()
+                    .addOnSuccessListener {
+                        if (!it.isEmpty) {
+                            db.collection("USERS").whereEqualTo("user_email",email)
+                                .addSnapshotListener{ value, _ ->
+                                    val thisUsers = value?.toObjects(User::class.java)
+                                    val user = thisUsers?.first()
+                                    fail_count = user!!.login_fail_count
+                                }
+
+                            when (fail_count) {
+                                0 -> {
+                                    errorDialog("You still got 2 more attempt")
+                                }
+                                1 -> {
+                                    errorDialog("You still got 1 more attempt")
+                                }
+                                else -> {
+                                    errorDialog("Your Account is blocked!!")
+                                }
+                            }
+
+                        }
+                        else {
+                            login_fail()
+                        }
+                    }
+
+
+
+
+                db.collection("USERS").whereEqualTo("user_email",email).get()
+                    .addOnSuccessListener {
+                        if(!it.isEmpty){
+                            val thisUsers = it.toObjects(User::class.java)
+                            val user = thisUsers.first()
+                            db.collection("USERS").document(user.user_id)
+                                .update("login_fail_count", FieldValue.increment(1))
+                        }
+
+                    }
+
+            }
+        }
+
     }
+
+    private fun login_fail(){
+        errorDialog("Invalid Login credentials")
+    }
+
 }
