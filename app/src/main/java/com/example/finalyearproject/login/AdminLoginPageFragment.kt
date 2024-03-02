@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.finalyearproject.MainActivity
 import com.example.finalyearproject.data.AuthViewModel
 import com.example.finalyearproject.data.User
-import com.example.finalyearproject.databinding.FragmentLoginBinding
+import com.example.finalyearproject.databinding.FragmentAdminLoginPageBinding
 import com.example.finalyearproject.util.errorDialog
 import com.example.finalyearproject.util.hideKeyboard
 import com.google.firebase.firestore.FieldValue
@@ -20,9 +20,9 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 
-class LoginFragment : Fragment() {
+class AdminLoginPageFragment : Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentAdminLoginPageBinding
     private val nav by lazy { findNavController() }
     private val auth: AuthViewModel by activityViewModels()
     private val db = Firebase.firestore
@@ -30,7 +30,7 @@ class LoginFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
 
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        binding = FragmentAdminLoginPageBinding.inflate(inflater, container, false)
 
         binding.btnLogin.setOnClickListener {
             val email = binding.edtLoginEmail.text.toString().trim()
@@ -78,7 +78,6 @@ class LoginFragment : Fragment() {
                         }
                 }
                 else {
-
                     login_fail()
 
                 }
@@ -132,4 +131,7 @@ class LoginFragment : Fragment() {
         errorDialog("Invalid Login credentials")
     }
 
+//    override fun onSupportNavigateUp(): Boolean {
+//        return nav.navigateUp() || super.onSupportNavigateUp()
+//    }
 }

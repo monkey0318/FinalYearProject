@@ -2,33 +2,44 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navlogin"
-    app:startDestination="@id/loginFragment2">
+    android:id="@+id/user_login"
+    android:label="User"
+    app:startDestination="@id/selection">
 
-<!--    <fragment-->
-<!--        android:id="@+id/forgetPasswordFragment"-->
-<!--        android:name="com.example.finalyearproject.login.ForgetPasswordFragment"-->
-<!--        android:label="Forget Password"-->
-<!--        tools:layout="@layout/fragment_forget_password">-->
-<!--        <action-->
-<!--            android:id="@+id/action_forgetPasswordFragment_to_resetPasswordFragment"-->
-<!--            app:destination="@id/resetPasswordFragment" />-->
-<!--    </fragment>-->
-<!--    <fragment-->
-<!--        android:id="@+id/resetPasswordFragment"-->
-<!--        android:name="com.example.finalyearproject.login.ResetPasswordFragment"-->
-<!--        android:label="Password Reset"-->
-<!--        tools:layout="@layout/fragment_reset_password">-->
-<!--        <action-->
-<!--            android:id="@+id/action_resetPasswordFragment_to_loginFragment2"-->
-<!--            app:destination="@id/loginFragment2" />-->
-<!--        <argument-->
-<!--            android:name="email"-->
-<!--            app:argType="string" />-->
-<!--    </fragment>-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/forgetPasswordFragment"-->
+    <!--        android:name="com.example.finalyearproject.login.ForgetPasswordFragment"-->
+    <!--        android:label="Forget Password"-->
+    <!--        tools:layout="@layout/fragment_forget_password">-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_forgetPasswordFragment_to_resetPasswordFragment"-->
+    <!--            app:destination="@id/resetPasswordFragment" />-->
+    <!--    </fragment>-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/resetPasswordFragment"-->
+    <!--        android:name="com.example.finalyearproject.login.ResetPasswordFragment"-->
+    <!--        android:label="Password Reset"-->
+    <!--        tools:layout="@layout/fragment_reset_password">-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_resetPasswordFragment_to_loginFragment2"-->
+    <!--            app:destination="@id/loginFragment2" />-->
+    <!--        <argument-->
+    <!--            android:name="email"-->
+    <!--            app:argType="string" />-->
+    <!--    </fragment>-->
     <fragment
-        android:id="@+id/loginFragment2"
-        android:name="com.example.finalyearproject.login.LoginFragment"
-        android:label="Login"
-        tools:layout="@layout/fragment_login" />
+        android:id="@+id/admin_login"
+        android:name="com.example.finalyearproject.login.AdminLoginPageFragment"
+        android:label="Admin"
+        tools:layout="@layout/fragment_admin_login_page" />
+    <fragment
+        android:id="@+id/user_login"
+        android:name="com.example.finalyearproject.login.UserLoginPageFragment"
+        android:label="User"
+        tools:layout="@layout/fragment_user_login_page" />
+    <fragment
+        android:id="@+id/selection"
+        android:name="com.example.finalyearproject.login.LoginSelectionFragment"
+        android:label="choice"
+        tools:layout="@layout/fragment_login_selection" />
 </navigation>

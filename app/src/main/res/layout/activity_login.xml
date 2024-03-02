@@ -7,7 +7,7 @@
     tools:context=".login.LoginActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_login"
+        android:id="@+id/nav_selection"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -16,6 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/navlogin" />
+        app:navGraph="@navigation/nav_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
