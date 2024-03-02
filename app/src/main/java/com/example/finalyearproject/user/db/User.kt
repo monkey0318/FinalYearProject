@@ -1,4 +1,4 @@
-package com.example.finalyearproject.user.data
+package com.example.finalyearproject.user.db
 
 import com.google.firebase.firestore.Blob
 import com.google.firebase.firestore.DocumentId

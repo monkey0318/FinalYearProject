@@ -1,9 +1,9 @@
-package com.example.finalyearproject.user.data
+package com.example.finalyearproject.user.db
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.finalyearproject.data.User
+import com.example.finalyearproject.user.db.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase

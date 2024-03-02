@@ -12,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.finalyearproject.MainActivity
 import com.example.finalyearproject.R
 import com.example.finalyearproject.data.AuthViewModel
-import com.example.finalyearproject.data.User
-import com.example.finalyearproject.databinding.FragmentLoginBinding
+import com.example.finalyearproject.user.db.User
+import com.example.finalyearproject.databinding.FragmentUserLoginBinding
 import com.example.finalyearproject.util.errorDialog
 import com.example.finalyearproject.util.hideKeyboard
 import com.google.firebase.firestore.FieldValue
@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 
 
 class UserLoginFragment : Fragment() {
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentUserLoginBinding
     private val nav by lazy { findNavController() }
     private val auth: AuthViewModel by activityViewModels()
     private val db = Firebase.firestore
@@ -31,7 +31,7 @@ class UserLoginFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
 
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        binding = FragmentUserLoginBinding.inflate(inflater, container, false)
 
 
         binding.btnLogin.setOnClickListener {
@@ -73,7 +73,7 @@ class UserLoginFragment : Fragment() {
                                 db.collection("USERS").document(user.user_id)
                                     .update("login_fail_count", 0)
 
-                                val intent = Intent(activity, MainActivity::class.java)
+                                val intent = Intent(activity, UserHomeFragment::class.java)
                                     .putExtra("userID", user.user_id)
                                 startActivity(intent)
                                 activity?.finish()
