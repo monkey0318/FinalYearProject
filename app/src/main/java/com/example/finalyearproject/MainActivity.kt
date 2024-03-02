@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             binding.navView.menu.findItem(R.id.logout)
                 ?.setOnMenuItemClickListener { logout(); true }
         }
-//        userID?.let { actVM.getUser(it) }
         actVM.getUser(userID!!)
     }
 
