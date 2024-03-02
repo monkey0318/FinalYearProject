@@ -6,24 +6,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.finalyearproject.data.StaffViewModel
 import com.example.finalyearproject.data.User
-import com.example.finalyearproject.data.UserViewModel
-import com.example.finalyearproject.databinding.FragmentCreateUserBinding
+import com.example.finalyearproject.databinding.FragmentCreateStaffBinding
 import com.example.finalyearproject.util.cropToBlob
 import com.example.finalyearproject.util.errorDialog
 import com.example.finalyearproject.util.snackbar
 import com.google.firebase.auth.FirebaseAuth
 
-class CreateUserFragment : Fragment() {
+class CreateStaffFragment : Fragment() {
 
-    private lateinit var binding: FragmentCreateUserBinding
+    private lateinit var binding: FragmentCreateStaffBinding
     private val nav by lazy { findNavController() }
-    private val vm: UserViewModel by activityViewModels()
+    private val vm: StaffViewModel by activityViewModels()
     private lateinit var mAuth : FirebaseAuth
 
 
@@ -35,7 +34,7 @@ class CreateUserFragment : Fragment() {
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
 
-        binding = FragmentCreateUserBinding.inflate(inflater, container, false)
+        binding = FragmentCreateStaffBinding.inflate(inflater, container, false)
 
         reset()
         binding.imgPhoto.setOnClickListener { select() }

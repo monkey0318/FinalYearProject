@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.finalyearproject.MainActivity
+import com.example.finalyearproject.R
 import com.example.finalyearproject.data.AuthViewModel
 import com.example.finalyearproject.data.User
 import com.example.finalyearproject.databinding.FragmentAdminLoginPageBinding
@@ -37,7 +38,7 @@ class AdminLoginPageFragment : Fragment() {
             val password = binding.edtLoginPassword.text.toString().trim()
 
             login(email,password) }
-//        binding.txtForgotPassword.setOnClickListener { nav.navigate(R.id.forgetPasswordFragment) }
+        binding.txtForgotPassword.setOnClickListener { nav.navigate(R.id.forgetPasswordFragment) }
 
         return binding.root
     }
@@ -61,7 +62,6 @@ class AdminLoginPageFragment : Fragment() {
                         }
                     }
                 if (fail_count < 3) {
-
                     db.collection("STAFF").whereEqualTo("user_email",email).get()
                         .addOnSuccessListener {
                             if (!it.isEmpty) {
@@ -79,7 +79,6 @@ class AdminLoginPageFragment : Fragment() {
                 }
                 else {
                     login_fail()
-
                 }
             }
             else {

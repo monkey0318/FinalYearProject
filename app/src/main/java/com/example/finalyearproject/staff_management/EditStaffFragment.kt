@@ -10,23 +10,23 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.example.finalyearproject.data.StaffViewModel
 import com.example.finalyearproject.data.User
-import com.example.finalyearproject.data.UserViewModel
-import com.example.finalyearproject.databinding.FragmentEditUserBinding
+import com.example.finalyearproject.databinding.FragmentEditStaffBinding
 import com.example.finalyearproject.util.cropToBlob
 import com.example.finalyearproject.util.errorDialog
 import com.example.finalyearproject.util.snackbar
 import com.example.finalyearproject.util.toBitmap
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
-class EditUserFragment : Fragment() {
+class EditStaffFragment : Fragment() {
 
-    private lateinit var binding: FragmentEditUserBinding
+    private lateinit var binding: FragmentEditStaffBinding
     private val nav by lazy { findNavController() }
-    private val vm: UserViewModel by activityViewModels()
+    private val vm: StaffViewModel by activityViewModels()
     private val db = Firebase.firestore
 
     private val id by lazy { requireArguments().getString("id") ?: "" }
@@ -41,7 +41,7 @@ class EditUserFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
 
-        binding = FragmentEditUserBinding.inflate(inflater,container,false)
+        binding = FragmentEditStaffBinding.inflate(inflater,container,false)
 
         reset()
         binding.imgPhoto.setOnClickListener { select() }
@@ -66,7 +66,7 @@ class EditUserFragment : Fragment() {
             nav.navigateUp()
             return
         }
-        load(u)
+//        load(u)
     }
 
     private fun load(u: User) {

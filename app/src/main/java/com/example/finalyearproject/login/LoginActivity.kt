@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupActionBarWithNavController(nav)
+
     }
     override fun onSupportNavigateUp(): Boolean {
         return nav.navigateUp() || super.onSupportNavigateUp()

@@ -3,17 +3,16 @@ package com.example.finalyearproject.user
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.finalyearproject.R
+import com.example.finalyearproject.databinding.FragmentUserRegisterBinding
 import com.example.finalyearproject.user.db.User
 import com.example.finalyearproject.user.db.UsersViewModel
-import com.example.finalyearproject.databinding.FragmentUserRegisterBinding
 import com.example.finalyearproject.util.cropToBlob
 import com.example.finalyearproject.util.errorDialog
 import com.example.finalyearproject.util.snackbar
@@ -58,13 +57,13 @@ class UserRegisterFragment : Fragment() {
 
     private fun submit(email: String, password: String) {
         val u = User(
-            user_id       = binding.edtId.text.toString().trim().uppercase(),
-            user_name     = binding.edtName.text.toString().trim(),
-            user_email    = binding.edtEmail.text.toString().trim(),
+            user_id = binding.edtId.text.toString().trim().uppercase(),
+            user_name = binding.edtName.text.toString().trim(),
+            user_email = binding.edtEmail.text.toString().trim(),
             user_password = binding.edtPassword.text.toString().trim(),
-            user_address  = binding.edtAddress.text.toString().trim(),
-            user_photo    = binding.imgPhoto.cropToBlob(300,300),
-            user_role     = binding.spRole.selectedItem as String
+            user_address = binding.edtAddress.text.toString().trim(),
+            user_photo = binding.imgPhoto.cropToBlob(300,300),
+            user_role = binding.spRole.selectedItem as String
         )
 
 

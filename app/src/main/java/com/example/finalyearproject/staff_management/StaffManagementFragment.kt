@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.finalyearproject.R
-import com.example.finalyearproject.data.UserViewModel
+import com.example.finalyearproject.data.StaffViewModel
 import com.example.finalyearproject.databinding.FragmentStaffManagementBinding
 import com.example.finalyearproject.util.UserAdapter
 
@@ -19,7 +19,7 @@ class StaffManagementFragment : Fragment() {
 
     private lateinit var binding: FragmentStaffManagementBinding
     private val nav by lazy { findNavController() }
-    private val vm: UserViewModel by activityViewModels()
+    private val vm: StaffViewModel by activityViewModels()
 
     private lateinit var adapter: UserAdapter
 
@@ -41,7 +41,7 @@ class StaffManagementFragment : Fragment() {
 
         vm.results.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
-            binding.txtCount.text = "${list.size} user(s)"
+            binding.txtCount.text = "${list?.size} user(s)"
         }
 
 
@@ -53,8 +53,6 @@ class StaffManagementFragment : Fragment() {
                 return true
             }
         })
-
-
         return binding.root
     }
 

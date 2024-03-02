@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_staff_management" />
     <fragment
         android:id="@+id/createUserFragment"
-        android:name="com.example.finalyearproject.staff_management.CreateUserFragment"
+        android:name="com.example.finalyearproject.staff_management.CreateStaffFragment"
         android:label="Create Staff"
-        tools:layout="@layout/fragment_create_user" />
+        tools:layout="@layout/fragment_create_staff" />
     <fragment
         android:id="@+id/editUserFragment"
-        android:name="com.example.finalyearproject.staff_management.EditUserFragment"
+        android:name="com.example.finalyearproject.staff_management.EditStaffFragment"
         android:label="Edit Staff Details"
-        tools:layout="@layout/fragment_edit_user" />
+        tools:layout="@layout/fragment_edit_staff" />
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="com.example.finalyearproject.user.UserProfileFragment"

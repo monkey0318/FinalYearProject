@@ -4,7 +4,7 @@ import com.google.firebase.firestore.Blob
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.util.*
+import java.util.Date
 
 data class User(
     @DocumentId
@@ -22,5 +22,5 @@ data class User(
         return user_id
     }
 }
-
 val USERS = Firebase.firestore.collection("STAFF")
+

@@ -9,12 +9,12 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class UserViewModel : ViewModel() {
+class StaffViewModel : ViewModel() {
 
     private val coll = Firebase.firestore.collection("STAFF")
     private var userData = listOf<User>()
     private val users = MutableLiveData<List<User>>()
-    val results = MutableLiveData<List<User>>()
+    val results = MutableLiveData<List<User>?>()
 
     private var name = ""
 
