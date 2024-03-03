@@ -10,7 +10,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.Date
 
-data class User(
+data class Users(
     @DocumentId
     var user_id: String = "",
     var user_name: String = "",
@@ -27,23 +27,23 @@ data class User(
     }
 }
 
-val USERS = Firebase.firestore.collection("USERS")
+val USER = Firebase.firestore.collection("USERS")
 
-fun restore_user(ctx: Context) {
-    USERS.get().addOnSuccessListener { snap->
-        for(doc in snap.documents) {
-            USERS.document(doc.id).delete()
-        }
-        val user1 = User(
-            user_id = "A123",
-            user_name =  "Jenn",
-            user_email =  "jenn@gmail.com",
-            user_password =  "123",
-            user_address =  "Ampang Park",
-            user_photo = BitmapFactory.decodeResource(ctx.resources, R.drawable.iu_2).toBlob(),
-            user_role =  "USER",
-            login_fail_count = 0,
-        )
-        USERS.document("A123").set(user1)
-    }
-}
+//fun restore_user(ctx: Context) {
+//    USERS.get().addOnSuccessListener { snap->
+//        for(doc in snap.documents) {
+//            USERS.document(doc.id).delete()
+//        }
+//        val user1 = User(
+//            user_id = "A123",
+//            user_name =  "Jenn",
+//            user_email =  "jenn@gmail.com",
+//            user_password =  "123",
+//            user_address =  "Ampang Park",
+//            user_photo = BitmapFactory.decodeResource(ctx.resources, R.drawable.iu_2).toBlob(),
+//            user_role =  "USER",
+//            login_fail_count = 0,
+//        )
+//        USERS.document("A123").set(user1)
+//    }
+//}

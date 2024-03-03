@@ -3,7 +3,7 @@ package com.example.finalyearproject.user.db
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.finalyearproject.user.db.User
+import com.example.finalyearproject.user.db.Users
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
@@ -13,9 +13,9 @@ import kotlinx.coroutines.tasks.await
 class UsersViewModel : ViewModel() {
 
     private val coll = Firebase.firestore.collection("USERS")
-    private var userData = listOf<User>()
-    private val users = MutableLiveData<List<User>>()
-    val results = MutableLiveData<List<User>?>()
+    private var userData = listOf<Users>()
+    private val users = MutableLiveData<List<Users>>()
+    val results = MutableLiveData<List<Users>?>()
 
     private var name = ""
 
@@ -23,12 +23,12 @@ class UsersViewModel : ViewModel() {
         coll.addSnapshotListener { snap, _ -> users.value = snap?.toObjects() }
 
         viewModelScope.launch {
-            val users = com.example.finalyearproject.data.USERS.get().await().toObjects<User>()
+            val users = com.example.finalyearproject.data.USERS.get().await().toObjects<Users>()
 
             com.example.finalyearproject.data.USERS.addSnapshotListener { snap, _ ->
                 if (snap == null) return@addSnapshotListener
 
-                userData = snap.toObjects<User>()
+                userData = snap.toObjects<Users>()
 
                 updateResult()
             }
@@ -48,7 +48,7 @@ class UsersViewModel : ViewModel() {
         }
     }
 
-    fun get(id: String): User? {
+    fun get(id: String): Users? {
         return users.value?.find { u -> u.user_id == id }
     }
 
@@ -58,7 +58,7 @@ class UsersViewModel : ViewModel() {
     }
 
 
-    fun set(u: User) {
+    fun set(u: Users) {
         coll.document(u.user_id).set(u)
     }
 
@@ -72,7 +72,7 @@ class UsersViewModel : ViewModel() {
         return users.value?.any { u -> u.user_email == email } ?: false
     }
 
-    fun validate(u: User, insert: Boolean = true): String {
+    fun validate(u: Users, insert: Boolean = true): String {
         val regexId = Regex("""^[0-9S]{4}$""")
         var e = ""
 

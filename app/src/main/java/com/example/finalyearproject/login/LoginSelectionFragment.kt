@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.finalyearproject.R
 import com.example.finalyearproject.databinding.FragmentLoginSelectionBinding
-import com.example.finalyearproject.user.db.restore_user
+//import com.example.finalyearproject.user.db.restore_user
 
 
 class LoginSelectionFragment : Fragment() {
@@ -24,8 +24,8 @@ class LoginSelectionFragment : Fragment() {
         return binding.root
     }
 
-    private fun restore() {
-        val ctx = requireContext()
-        restore_user(ctx)
-    }
+//    private fun restore() {
+//        val ctx = requireContext()
+//        restore_user(ctx)
+//    }
 }

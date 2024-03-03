@@ -10,9 +10,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.finalyearproject.MainActivity
-import com.example.finalyearproject.data.AuthViewModel
-import com.example.finalyearproject.data.User
+import com.example.finalyearproject.user.db.UsersAuthViewModel
+import com.example.finalyearproject.user.db.Users
 import com.example.finalyearproject.databinding.FragmentUserLoginPageBinding
+import com.example.finalyearproject.user.UserHomeFragment
 import com.example.finalyearproject.util.errorDialog
 import com.example.finalyearproject.util.hideKeyboard
 import com.google.firebase.firestore.FieldValue
@@ -24,7 +25,7 @@ class UserLoginPageFragment : Fragment() {
 
     private lateinit var binding: FragmentUserLoginPageBinding
     private val nav by lazy { findNavController() }
-    private val auth: AuthViewModel by activityViewModels()
+    private val auth: UsersAuthViewModel by activityViewModels()
     private val db = Firebase.firestore
     private var fail_count = 0
 
@@ -52,28 +53,29 @@ class UserLoginPageFragment : Fragment() {
             val success = auth.login(ctx, email, password,)
             if (success) {
 
-                db.collection("STAFF").whereEqualTo("user_email", email).get()
+                db.collection("USERS").whereEqualTo("user_email", email).get()
                     .addOnSuccessListener {
                         if (!it.isEmpty) {
-                            val thisUsers = it.toObjects(User::class.java)
+                            val thisUsers = it.toObjects(Users::class.java)
                             val user = thisUsers.first()
                             fail_count = user!!.login_fail_count
                         }
                     }
                 if (fail_count < 3) {
 
-                    db.collection("STAFF").whereEqualTo("user_email",email).get()
+                    db.collection("USERS").whereEqualTo("user_email",email).get()
                         .addOnSuccessListener {
                             if (!it.isEmpty) {
-                                val thisUsers = it.toObjects(User::class.java)
+                                val thisUsers = it.toObjects(Users::class.java)
                                 val user = thisUsers.first()
-                                db.collection("STAFF").document(user.user_id)
+                                db.collection("USERS").document(user.user_id)
                                     .update("login_fail_count", 0)
 
                                 val intent = Intent(activity, MainActivity::class.java)
                                     .putExtra("userID", user.user_id)
                                 startActivity(intent)
                                 activity?.finish()
+
                             }
                         }
                 }
@@ -84,12 +86,12 @@ class UserLoginPageFragment : Fragment() {
                 }
             }
             else {
-                db.collection("STAFF").whereEqualTo("user_email", email).get()
+                db.collection("USERS").whereEqualTo("user_email", email).get()
                     .addOnSuccessListener {
                         if (!it.isEmpty) {
-                            db.collection("STAFF").whereEqualTo("user_email",email)
+                            db.collection("USERS").whereEqualTo("user_email",email)
                                 .addSnapshotListener{ value, _ ->
-                                    val thisUsers = value?.toObjects(User::class.java)
+                                    val thisUsers = value?.toObjects(Users::class.java)
                                     val user = thisUsers?.first()
                                     fail_count = user!!.login_fail_count
                                 }
@@ -112,12 +114,15 @@ class UserLoginPageFragment : Fragment() {
                         }
                     }
 
-                db.collection("STAFF").whereEqualTo("user_email",email).get()
+
+
+
+                db.collection("USERS").whereEqualTo("user_email",email).get()
                     .addOnSuccessListener {
                         if(!it.isEmpty){
-                            val thisUsers = it.toObjects(User::class.java)
+                            val thisUsers = it.toObjects(Users::class.java)
                             val user = thisUsers.first()
-                            db.collection("STAFF").document(user.user_id)
+                            db.collection("USERS").document(user.user_id)
                                 .update("login_fail_count", FieldValue.increment(1))
                         }
 
@@ -125,7 +130,6 @@ class UserLoginPageFragment : Fragment() {
 
             }
         }
-
     }
 
     private fun login_fail(){

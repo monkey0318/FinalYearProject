@@ -8,23 +8,16 @@
     <fragment
         android:id="@+id/adminLoginPageFragment"
         android:name="com.example.finalyearproject.login.AdminLoginPageFragment"
+        android:label="fragment_login"
         tools:layout="@layout/fragment_admin_login_page" />
     <fragment
         android:id="@+id/userLoginPageFragment"
         android:name="com.example.finalyearproject.login.UserLoginPageFragment"
+        android:label="fragment_user_login_page"
         tools:layout="@layout/fragment_user_login_page" />
     <fragment
         android:id="@+id/loginSelectionFragment"
         android:name="com.example.finalyearproject.login.LoginSelectionFragment"
+        android:label="fragment_login_selection"
         tools:layout="@layout/fragment_login_selection" />
-    <fragment
-        android:id="@+id/forgetPasswordFragment"
-        android:name="com.example.finalyearproject.login.ForgetPasswordFragment"
-        android:label="fragment_forget_password"
-        tools:layout="@layout/fragment_forget_password" />
-    <fragment
-        android:id="@+id/userRegisterFragment2"
-        android:name="com.example.finalyearproject.user.UserRegisterFragment"
-        android:label="fragment_user_register"
-        tools:layout="@layout/fragment_user_register" />
 </navigation>

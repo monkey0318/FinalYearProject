@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.finalyearproject.databinding.FragmentUserRegisterBinding
-import com.example.finalyearproject.user.db.User
+import com.example.finalyearproject.user.db.Users
 import com.example.finalyearproject.user.db.UsersViewModel
 import com.example.finalyearproject.util.cropToBlob
 import com.example.finalyearproject.util.errorDialog
@@ -56,7 +56,7 @@ class UserRegisterFragment : Fragment() {
     }
 
     private fun submit(email: String, password: String) {
-        val u = User(
+        val u = Users(
             user_id = binding.edtId.text.toString().trim().uppercase(),
             user_name = binding.edtName.text.toString().trim(),
             user_email = binding.edtEmail.text.toString().trim(),

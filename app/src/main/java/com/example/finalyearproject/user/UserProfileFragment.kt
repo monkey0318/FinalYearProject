@@ -9,11 +9,12 @@ import androidx.fragment.app.activityViewModels
 import com.example.finalyearproject.R
 import com.example.finalyearproject.data.ActivityViewModel
 import com.example.finalyearproject.databinding.FragmentProfileBinding
+import com.example.finalyearproject.user.db.UserActivityViewModel
 import com.example.finalyearproject.util.toBitmap
 
 class UserProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
-    private val actVM: ActivityViewModel by activityViewModels()
+    private val actVM: UserActivityViewModel by activityViewModels()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
