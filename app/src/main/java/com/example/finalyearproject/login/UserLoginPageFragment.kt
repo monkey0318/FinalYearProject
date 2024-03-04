@@ -13,6 +13,7 @@ import com.example.finalyearproject.MainActivity
 import com.example.finalyearproject.user.db.UsersAuthViewModel
 import com.example.finalyearproject.user.db.Users
 import com.example.finalyearproject.databinding.FragmentUserLoginPageBinding
+import com.example.finalyearproject.user.UserHome
 import com.example.finalyearproject.user.UserHomeFragment
 import com.example.finalyearproject.util.errorDialog
 import com.example.finalyearproject.util.hideKeyboard
@@ -71,7 +72,7 @@ class UserLoginPageFragment : Fragment() {
                                 db.collection("USERS").document(user.user_id)
                                     .update("login_fail_count", 0)
 
-                                val intent = Intent(activity, MainActivity::class.java)
+                                val intent = Intent(activity, UserHome::class.java)
                                     .putExtra("userID", user.user_id)
                                 startActivity(intent)
                                 activity?.finish()
