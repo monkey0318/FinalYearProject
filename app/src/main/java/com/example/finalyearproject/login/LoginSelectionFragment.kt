@@ -19,7 +19,7 @@ class LoginSelectionFragment : Fragment() {
         binding = FragmentLoginSelectionBinding.inflate(inflater, container, false)
 
         binding.btnAdmin.setOnClickListener { nav.navigate(R.id.adminLoginPageFragment) }
-        binding.btnUser.setOnClickListener { nav.navigate(R.id.userLoginPageFragment) }
+//        binding.btnUser.setOnClickListener { nav.navigate(R.id.userLoginPageFragment) }
 
         return binding.root
     }

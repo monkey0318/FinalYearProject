@@ -1,17 +1,19 @@
 package com.example.finalyearproject.login
 
-//import com.example.finalyearproject.util.PasswordRecoveryEmail
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.finalyearproject.databinding.FragmentForgetPasswordBinding
+import com.example.finalyearproject.util.PasswordRecoveryEmail
 import com.example.finalyearproject.util.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
 import java.text.DecimalFormat
+
 
 class ForgetPasswordFragment : Fragment() {
 
@@ -44,10 +46,8 @@ class ForgetPasswordFragment : Fragment() {
         }
         else {
             val email = binding.edtEmail.text.toString().trim()
-//            nav.navigate(ForgetPasswordFragmentDirections.actionForgetPasswordFragmentToResetPasswordFragment(email))
+            nav.navigate(ForgetPasswordFragmentDirections.actionForgetPasswordFragmentToResetPasswordFragment(email))
         }
-
-
     }
 
     private fun send() {
@@ -60,31 +60,31 @@ class ForgetPasswordFragment : Fragment() {
         }
 
 
-//        val subject = "Password Verification Code - ${System.currentTimeMillis()}"
-//        val content = """
-//            <p> Your Verification Code is: </p>
-//            <h1 style ="color: black">$veriCode</h1>
-//            <p> Please contact the Human Resource Department if the action is not requested by you.</p>
-//        """.trimIndent()
-//
-//        PasswordRecoveryEmail()
-//            .to(email)
-//            .subject(subject)
-//            .content(content)
-//            .isHtml()
-//            .send() {
-//                snackbar("Verification Code Sent")
-//                binding.btnSend.isEnabled = true
-//                binding.btnSend.requestFocus()
-//                binding.textView10.isVisible = true
-//                binding.edtVerifyCode.isVisible = isVisible
-//                binding.edtVerifyCode.isEnabled = true
-//                binding.btnVerify.isEnabled = true
-//                binding.btnVerify.isVisible = true
-//            }
-//
-//        snackbar("Sending...")
-//        binding.btnSend.isEnabled = false
+        val subject = "Password Verification Code - ${System.currentTimeMillis()}"
+        val content = """
+            <p> Your Verification Code is: </p>
+            <h1 style ="color: black">$veriCode</h1>
+            <p> Please contact the Human Resource Department if the action is not requested by you.</p>
+        """.trimIndent()
+
+        PasswordRecoveryEmail()
+            .to(email)
+            .subject(subject)
+            .content(content)
+            .isHtml()
+            .send() {
+                snackbar("Verification Code Sent")
+                binding.btnSend.isEnabled = true
+                binding.btnSend.requestFocus()
+                binding.textView10.isVisible = true
+                binding.edtVerifyCode.isVisible = isVisible
+                binding.edtVerifyCode.isEnabled = true
+                binding.btnVerify.isEnabled = true
+                binding.btnVerify.isVisible = true
+            }
+
+        snackbar("Sending...")
+        binding.btnSend.isEnabled = false
     }
 
     private fun isEmail(email: String) = Patterns.EMAIL_ADDRESS.matcher(email).matches()

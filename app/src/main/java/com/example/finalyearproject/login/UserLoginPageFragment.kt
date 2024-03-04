@@ -9,12 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.finalyearproject.MainActivity
-import com.example.finalyearproject.user.db.UsersAuthViewModel
-import com.example.finalyearproject.user.db.Users
 import com.example.finalyearproject.databinding.FragmentUserLoginPageBinding
 import com.example.finalyearproject.user.UserHome
-import com.example.finalyearproject.user.UserHomeFragment
+import com.example.finalyearproject.user.db.Users
+import com.example.finalyearproject.user.db.UsersAuthViewModel
 import com.example.finalyearproject.util.errorDialog
 import com.example.finalyearproject.util.hideKeyboard
 import com.google.firebase.firestore.FieldValue
@@ -53,7 +51,6 @@ class UserLoginPageFragment : Fragment() {
         lifecycleScope.launch {
             val success = auth.login(ctx, email, password,)
             if (success) {
-
                 db.collection("USERS").whereEqualTo("user_email", email).get()
                     .addOnSuccessListener {
                         if (!it.isEmpty) {
@@ -63,7 +60,6 @@ class UserLoginPageFragment : Fragment() {
                         }
                     }
                 if (fail_count < 3) {
-
                     db.collection("USERS").whereEqualTo("user_email",email).get()
                         .addOnSuccessListener {
                             if (!it.isEmpty) {
@@ -81,9 +77,7 @@ class UserLoginPageFragment : Fragment() {
                         }
                 }
                 else {
-
                     login_fail()
-
                 }
             }
             else {

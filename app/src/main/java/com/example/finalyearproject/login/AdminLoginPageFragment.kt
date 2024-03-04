@@ -38,7 +38,7 @@ class AdminLoginPageFragment : Fragment() {
             val password = binding.edtLoginPassword.text.toString().trim()
 
             login(email,password) }
-//        binding.txtForgotPassword.setOnClickListener { nav.navigate(R.id.forgetPasswordFragment) }
+        binding.txtForgotPassword.setOnClickListener { nav.navigate(R.id.forgetPasswordFragment) }
 
         return binding.root
     }

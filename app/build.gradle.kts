@@ -3,6 +3,7 @@
     id("org.jetbrains.kotlin.android")
     //Firebase
     id("com.google.gms.google-services")
+    id ("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -40,6 +41,11 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
+    packagingOptions {
+        exclude("META-INF/NOTICE.md")
+        exclude("META-INF/LICENSE.md")
+    }
 }
 
 dependencies {
@@ -69,6 +75,10 @@ dependencies {
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 //    implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
+    implementation ("com.sun.mail:android-mail:1.6.6")
+    implementation ("com.sun.mail:android-activation:1.6.7")
+
+
 
 
 //    implementation("com.google.zxing:core:3.4.1")

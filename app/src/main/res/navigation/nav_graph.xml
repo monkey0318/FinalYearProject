@@ -154,4 +154,9 @@
         android:name="com.example.finalyearproject.payment.PaymentAckDetailsFragment"
         android:label="Payment History Details"
         tools:layout="@layout/fragment_payment_ack_details" />
+    <fragment
+        android:id="@+id/testingCreateEventFragment"
+        android:name="com.example.finalyearproject.event_management.TestingCreateEventFragment"
+        android:label="fragment_testing_create_event"
+        tools:layout="@layout/fragment_testing_create_event" />
 </navigation>
