@@ -27,7 +27,7 @@ class EventManagementFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle? ): View {
         binding = FragmentEventManagementBinding.inflate(inflater,container, false)
 
-        binding.btnAddEvent.setOnClickListener { nav.navigate(R.id.createEventFragment,)}
+        binding.btnAddEvent.setOnClickListener { nav.navigate(R.id.testingCreateEventFragment)}
         binding.btnSponsorship.setOnClickListener { nav.navigate(R.id.sponsorshipFragment)}
 
 

@@ -123,45 +123,45 @@ class CreateEventFragment : Fragment() {
 
     }
 
-    private fun setAlarm() {
+//    private fun setAlarm() {
+//
+//
+//
+//        alarmManager = activity?.getSystemService(ALARM_SERVICE) as AlarmManager
+//        val intent = Intent(activity,AlarmReceiver::class.java )
+//
+//        pendingIntent = PendingIntent.getBroadcast(activity,0,intent,0)
+//
+//        alarmManager.setRepeating(
+//
+//            AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
+//            AlarmManager.INTERVAL_DAY, pendingIntent
+//
+//        )
+//
+//         val toast = Toast.makeText(activity, "Reminder set Successfully", Toast.LENGTH_SHORT).show()
+//
+//    }
 
 
 
-        alarmManager = activity?.getSystemService(ALARM_SERVICE) as AlarmManager
-        val intent = Intent(activity,AlarmReceiver::class.java )
-
-        pendingIntent = PendingIntent.getBroadcast(activity,0,intent,0)
-
-        alarmManager.setRepeating(
-
-            AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY, pendingIntent
-
-        )
-
-         val toast = Toast.makeText(activity, "Reminder set Successfully", Toast.LENGTH_SHORT).show()
-
-    }
-
-
-
-    private fun createNotificationChannel() {
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-
-            val name : CharSequence = "foxandroidReminderChannel"
-            val description = "Channel For Alarm Manager"
-            val importance = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel("deeznut" ,name, importance)
-            channel. description = description
-            val notificationManager = activity?.getSystemService(
-                NotificationManager::class.java
-            )
-
-
-        }
-
-    }
+//    private fun createNotificationChannel() {
+//
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+//
+//            val name : CharSequence = "foxandroidReminderChannel"
+//            val description = "Channel For Alarm Manager"
+//            val importance = NotificationManager.IMPORTANCE_HIGH
+//            val channel = NotificationChannel("deeznut" ,name, importance)
+//            channel. description = description
+//            val notificationManager = activity?.getSystemService(
+//                NotificationManager::class.java
+//            )
+//
+//
+//        }
+//
+//    }
 
 
 }
