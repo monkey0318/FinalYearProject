@@ -108,10 +108,6 @@ class UserLoginPageFragment : Fragment() {
                             login_fail()
                         }
                     }
-
-
-
-
                 db.collection("USERS").whereEqualTo("user_email",email).get()
                     .addOnSuccessListener {
                         if(!it.isEmpty){

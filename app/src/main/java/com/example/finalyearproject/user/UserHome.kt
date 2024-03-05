@@ -1,22 +1,22 @@
 package com.example.finalyearproject.user
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.finalyearproject.R
-import com.example.finalyearproject.user.db.UserActivityViewModel
-import com.example.finalyearproject.user.db.AuthViewModel
-import com.example.finalyearproject.user.db.Users
 import com.example.finalyearproject.databinding.ActivityUserHomeBinding
 import com.example.finalyearproject.login.LoginActivity
+import com.example.finalyearproject.user.db.AuthViewModel
+import com.example.finalyearproject.user.db.UserActivityViewModel
+import com.example.finalyearproject.user.db.Users
 import com.example.finalyearproject.util.toBitmap
 
 class UserHome : AppCompatActivity() {
@@ -68,8 +68,9 @@ class UserHome : AppCompatActivity() {
             binding.navView.getHeaderView(0).setOnClickListener {
                 nav.navigate(R.id.userProfileFragment)
             }
-            if (user.user_role == "Staff") {
+            if (user.user_role == "USER") {
                 binding.navView.menu.findItem(R.id.staffManagementFragment).isVisible = false
+                binding.navView.menu.findItem(R.id.staffProfileFragment).isVisible = false
             }
             setHeader(user)
             binding.navView.menu.findItem(R.id.logout)

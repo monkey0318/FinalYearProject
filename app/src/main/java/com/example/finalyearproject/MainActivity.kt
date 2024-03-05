@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.staffManagementFragment,
                 R.id.sponsorshipFragment,
-                R.id.userProfileFragment,
+                R.id.staffProfileFragment,
                 R.id.eventManagementFragment2,
 //                R.id.reportFragment,
                 R.id.voucherFragment,
@@ -66,10 +66,14 @@ class MainActivity : AppCompatActivity() {
             binding.navView.inflateMenu(R.menu.drawer_login)
             binding.navView.inflateHeaderView(R.layout.login_header)
             binding.navView.getHeaderView(0).setOnClickListener {
-                nav.navigate(R.id.userProfileFragment)
+                nav.navigate(R.id.staffProfileFragment)
             }
-            if (user.user_role == "Staff") {
-                binding.navView.menu.findItem(R.id.staffManagementFragment).isVisible = false
+            if (user.user_role == "Staff" || user.user_role == "Manager") {
+//                binding.navView.menu.findItem(R.id.staffManagementFragment).isVisible = false
+                binding.navView.menu.findItem(R.id.userProfileFragment).isVisible = false
+                if(user.user_role == "Staff") {
+                    binding.navView.menu.findItem(R.id.staffManagementFragment).isVisible = false
+                }
             }
             setHeader(user)
             binding.navView.menu.findItem(R.id.logout)

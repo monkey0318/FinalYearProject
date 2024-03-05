@@ -16,6 +16,11 @@
     </group>
     <group android:id="@+id/group2" >
         <item
+            android:id="@+id/staffProfileFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_person"
+            android:title="@string/profile" />
+        <item
             android:id="@+id/userProfileFragment"
             android:checkable="true"
             android:icon="@drawable/ic_person"

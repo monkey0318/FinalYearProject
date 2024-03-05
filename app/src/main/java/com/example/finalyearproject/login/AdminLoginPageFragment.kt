@@ -52,7 +52,6 @@ class AdminLoginPageFragment : Fragment() {
         lifecycleScope.launch {
             val success = auth.login(ctx, email, password,)
             if (success) {
-
                 db.collection("STAFF").whereEqualTo("user_email", email).get()
                     .addOnSuccessListener {
                         if (!it.isEmpty) {

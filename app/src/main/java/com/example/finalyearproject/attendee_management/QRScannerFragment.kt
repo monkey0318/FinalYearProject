@@ -6,29 +6,20 @@
 //import android.view.ViewGroup
 //import android.widget.SearchView
 //import androidx.activity.result.contract.ActivityResultContracts
-//import androidx.camera.lifecycle.ProcessCameraProvider
-//import androidx.core.os.bundleOf
 //import androidx.fragment.app.Fragment
 //import androidx.fragment.app.activityViewModels
 //import androidx.navigation.fragment.findNavController
 //import androidx.recyclerview.widget.DividerItemDecoration
-//import com.example.finalyearproject.R
 //import com.example.finalyearproject.data.AttendeeViewModel
-//import com.example.finalyearproject.data.EventViewModel
 //import com.example.finalyearproject.data.Sales
-//import com.example.finalyearproject.data.User
 //import com.example.finalyearproject.databinding.FragmentQRScannerBinding
 //import com.example.finalyearproject.util.AttendeeAdapter
-//import com.example.finalyearproject.util.EventAdapter
 //import com.example.finalyearproject.util.informationDialog
 //import com.example.finalyearproject.util.snackbar
-//import com.google.android.material.snackbar.Snackbar
-//import com.google.common.util.concurrent.ListenableFuture
 //import com.google.firebase.firestore.FieldValue
 //import com.google.firebase.firestore.ktx.firestore
 //import com.google.firebase.ktx.Firebase
-////import com.google.zxing.integration.android.IntentIntegrator
-//import java.util.concurrent.ExecutorService
+//import com.google.zxing.integration.android.IntentIntegrator
 //
 //
 //class QRScannerFragment : Fragment() {
@@ -47,7 +38,6 @@
 //        else {
 //            val paymentId = content
 //
-//
 //                db.collection("Payment").document(paymentId).get()
 //                    .addOnSuccessListener {
 ////
@@ -63,8 +53,6 @@
 //
 //                                snackbar("Ticket is registered")
 //
-//
-//
 //                            }
 //                            else {
 //                                informationDialog("Invalid Ticket. \nOr\nTicket(s) is used ")
@@ -78,8 +66,6 @@
 //
 //
 //    }
-//
-//
 //
 //    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
 //
@@ -111,9 +97,6 @@
 //        })
 //
 //        binding.btnScan.setOnClickListener { scanQR() }
-//
-//
-//
 //
 //        return binding.root
 //    }

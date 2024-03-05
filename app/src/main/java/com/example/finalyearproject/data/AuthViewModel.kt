@@ -9,7 +9,7 @@ import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.tasks.await
 
 class AuthViewModel : ViewModel() {
-    val userLiveData = MutableLiveData<User?>()
+    val userLiveData = MutableLiveData<User>()
     private var listener: ListenerRegistration? = null
 
     override fun onCleared() {
